@@ -8,6 +8,7 @@ export interface SerialConfig {
   stopBits: 1 | 2
   parity: 'none' | 'even' | 'odd'
   flowControl: 'none' | 'hardware'
+  encoding: 'ascii' | 'cobs-f32'
 }
 
 export type ConnectionType = 'serial' | 'generator'
@@ -35,7 +36,8 @@ const DEFAULT_SERIAL_CONFIG: SerialConfig = {
   dataBits: 8,
   stopBits: 1,
   parity: 'none',
-  flowControl: 'none'
+  flowControl: 'none',
+  encoding: 'ascii'
 }
 
 export function useDataConnection(onLine: (line: string) => void): UseDataConnection {
