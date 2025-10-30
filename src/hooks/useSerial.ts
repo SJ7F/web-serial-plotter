@@ -1,5 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 
+import type { SerialConfig } from './useDataConnection'
+
 export type BaudRate = 300 | 600 | 1200 | 2400 | 4800 | 9600 | 19200 | 38400 | 57600 | 115200 | 230400 | 460800 | 921600
 
 export interface SerialState {
@@ -79,7 +81,7 @@ export function useSerial(): UseSerial {
     }
   }, []) // No dependencies - use refs for everything
 
-  const connect = useCallback(async (baudRate: number) => {
+  const connect = useCallback(async (config: SerialConfig) => {
     if (!state.isSupported) {
       setState((s) => ({ ...s, error: 'Web Serial not supported in this browser.' }))
       return
@@ -108,7 +110,7 @@ export function useSerial(): UseSerial {
         }
       }
       
-      await port.open({ baudRate })
+      await port.open({ baudRate: config.baudRate })
 
       const textDecoder = new TextDecoderStream()
       const readableClosed = port.readable.pipeTo(textDecoder.writable)

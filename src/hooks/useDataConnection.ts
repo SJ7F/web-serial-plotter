@@ -67,12 +67,10 @@ export function useDataConnection(onLine: (line: string) => void): UseDataConnec
     setError(null)
     
     try {
-      // Convert our config to the format useSerial expects
       // Note: Web Serial API has limited configuration options
-      await serial.connect(config.baudRate)
+      await serial.connect(config);
       setConnectionType('serial')
       // The actual port configuration would need to be done at the port.open() level
-      // For now, we'll just use baudRate as useSerial currently does
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to connect to serial port'
       setError(message)
