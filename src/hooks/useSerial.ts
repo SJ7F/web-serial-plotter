@@ -191,7 +191,7 @@ export function useSerial(): UseSerial {
                         const converted = new Float32Array(decoded.buffer, 0, Math.floor(decoded.byteLength/4));
 
                         // disgusting hack because I don't feel like refactoring stuff right now
-                        const line = converted.map((x: any)=>x.toString()).join(' ');
+                        const line = converted.map((x: number)=>x.toString()).join(' ');
                         lineHandlerRef.current?.(line);
 
                       } catch (err) { // catch COBS decoding errors
