@@ -74,7 +74,7 @@ const PlotToolsOverlay = forwardRef<HTMLDivElement, Props>(function PlotToolsOve
             <div className="p-2 space-y-1">
               <button
                 onClick={() => {
-                  onExportCsv({ scope: 'visible', includeTimestamps: true, timeFormat: 'iso' })
+                  onExportCsv({ scope: 'visible', includeTimestamps: true, timeFormat: 'iso', format: 'csv' })
                   setShowExportMenu(false)
                 }}
                 className="w-full text-left px-2 py-1 text-sm text-gray-700 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-700 rounded"
@@ -83,7 +83,7 @@ const PlotToolsOverlay = forwardRef<HTMLDivElement, Props>(function PlotToolsOve
               </button>
               <button
                 onClick={() => {
-                  onExportCsv({ scope: 'all', includeTimestamps: true, timeFormat: 'iso' })
+                  onExportCsv({ scope: 'all', includeTimestamps: true, timeFormat: 'iso', format: 'csv' })
                   setShowExportMenu(false)
                 }}
                 className="w-full text-left px-2 py-1 text-sm text-gray-700 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-700 rounded"
@@ -93,7 +93,7 @@ const PlotToolsOverlay = forwardRef<HTMLDivElement, Props>(function PlotToolsOve
               <div className="border-t border-gray-200 dark:border-neutral-700 my-1" />
               <button
                 onClick={() => {
-                  onExportCsv({ scope: 'visible', includeTimestamps: true, timeFormat: 'relative' })
+                  onExportCsv({ scope: 'visible', includeTimestamps: true, timeFormat: 'relative', format: 'csv' })
                   setShowExportMenu(false)
                 }}
                 className="w-full text-left px-2 py-1 text-sm text-gray-700 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-700 rounded"
@@ -102,12 +102,21 @@ const PlotToolsOverlay = forwardRef<HTMLDivElement, Props>(function PlotToolsOve
               </button>
               <button
                 onClick={() => {
-                  onExportCsv({ scope: 'all', includeTimestamps: true, timeFormat: 'relative' })
+                  onExportCsv({ scope: 'all', includeTimestamps: true, timeFormat: 'relative', format: 'csv' })
                   setShowExportMenu(false)
                 }}
                 className="w-full text-left px-2 py-1 text-sm text-gray-700 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-700 rounded"
               >
                 ⏱️ All Data (Relative Time)
+              </button>
+              <button
+                onClick={() => {
+                  onExportCsv({ scope: 'all', format: 'wav'})
+                  setShowExportMenu(false)
+                }}
+                className="w-full text-left px-2 py-1 text-sm text-gray-700 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-700 rounded"
+              >
+                🔊 Export as multi-channel WAV (⚠️ LOUD)
               </button>
             </div>
           </div>
