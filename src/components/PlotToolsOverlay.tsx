@@ -56,12 +56,12 @@ const PlotToolsOverlay = forwardRef<HTMLDivElement, Props>(function PlotToolsOve
       
       {/* CSV Export Button with Dropdown */}
       <div className="relative" ref={exportMenuRef}>
-        <Tooltip label="Export CSV">
+        <Tooltip label="Export">
           <Button 
             id="tour-tool-export"
             size="sm" 
             variant="neutral" 
-            aria-label="Export CSV" 
+            aria-label="Export" 
             disabled={!hasData}
             onClick={() => setShowExportMenu(!showExportMenu)}
           >
